@@ -1,6 +1,9 @@
 // import node modules
 import express from "express";
 
+// import api
+import { getUser, createUser } from "../api/user.api.js";
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -14,5 +17,9 @@ router.get("/zaptic", (req, res) => {
 router.get("/*", (req, res) => {
   res.render("pages/404");
 });
+
+router.get("/api/v1/users/:id", getUser);
+
+router.post('/api/v1/users', createUser)
 
 export default router;
