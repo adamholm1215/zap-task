@@ -27,3 +27,15 @@ export function getUserFromCSV(filename) {
   
   return { users, headers };
 }
+
+export function createUserToCSV(data, filename) {
+
+  try {
+    fs.appendFileSync(filename, "\r" + data.toString());
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+
+}
