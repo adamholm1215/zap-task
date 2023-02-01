@@ -14,12 +14,13 @@ router.get("/zaptic", (req, res) => {
   res.render("pages/zaptic");
 });
 
-router.get("/*", (req, res) => {
-  res.render("pages/404");
-});
 
 router.get("/api/v1/users/:id", getUser);
 
 router.post('/api/v1/users', createUser)
+
+router.get("/*", (req, res) => {
+  res.render("pages/404");
+});
 
 export default router;

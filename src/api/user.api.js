@@ -1,6 +1,5 @@
 // import utils
 import { getUserFromCSV, createUserToCSV } from "../utils/fileControl.js";
-import crypto from 'crypto';
 
 const DEFAULT_PASSWORD = 'zaptic';
 
@@ -8,7 +7,11 @@ export const getUser = (req, res) => {
   const userID = req.params.id;
   const { users } = getUserFromCSV("src/data/users.csv");
   const user = users.find(user => user.id === userID);
-  res.send(user);
+  if(user) {
+    res.send(user);
+  } else {
+    res.send("User not exist.");
+  }
 };
 
 export const createUser = (req, res) => {  
